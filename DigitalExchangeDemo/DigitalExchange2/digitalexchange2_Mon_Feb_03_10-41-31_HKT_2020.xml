@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="digitalexchange2" default="all">
+  
+  
+  <property file="digitalexchange2.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.cordalib.classpath">
+    <pathelement location="${basedir}/cordaLib/HdrHistogram-2.1.9.jar"/>
+    <pathelement location="${basedir}/cordaLib/HikariCP-2.5.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/LatencyUtils-2.0.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/animal-sniffer-annotations-1.14.jar"/>
+    <pathelement location="${basedir}/cordaLib/annotations-13.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/antlr-2.7.7.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-amqp-protocol-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-commons-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-core-client-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-jdbc-store-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-jms-client-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-journal-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-native-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-selector-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/artemis-server-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/asm-5.0.4.jar"/>
+    <pathelement location="${basedir}/cordaLib/bcpkix-jdk15on-1.60.jar"/>
+    <pathelement location="${basedir}/cordaLib/bcprov-jdk15on-1.60.jar"/>
+    <pathelement location="${basedir}/cordaLib/byte-buddy-1.8.17.jar"/>
+    <pathelement location="${basedir}/cordaLib/caffeine-2.6.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-buffer-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-common-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-concurrent-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-netty-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-serializer-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/catalyst-transport-1.1.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/checker-qual-2.0.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/classgraph-4.6.12.jar"/>
+    <pathelement location="${basedir}/cordaLib/classmate-1.3.4.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-beanutils-1.9.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-collections-3.2.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-collections4-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-fileupload-1.3.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-io-2.6.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-jexl3-3.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/commons-lang-2.6.jar"/>
+    <pathelement location="${basedir}/cordaLib/config-1.3.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/copycat-client-1.2.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/copycat-protocol-1.2.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/copycat-server-1.2.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-common-configuration-parsing-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-common-logging-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-common-validation-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-confidential-identities-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-core-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-jackson-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-node-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-node-api-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-rpc-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-serialization-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-shell-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/corda-tools-cliutils-4.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/crash.cli-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <pathelement location="${basedir}/cordaLib/crash.connectors.ssh-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <pathelement location="${basedir}/cordaLib/crash.shell-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <pathelement location="${basedir}/cordaLib/disruptor-3.4.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/dom4j-1.6.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/ea-agent-loader-1.0.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/eddsa-0.2.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/error_prone_annotations-2.1.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/forms-1.1-preview.jar"/>
+    <pathelement location="${basedir}/cordaLib/forms_rt-7.0.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/geronimo-jms_2.0_spec-1.0-alpha-2.jar"/>
+    <pathelement location="${basedir}/cordaLib/geronimo-json_1.0_spec-1.0-alpha-1.jar"/>
+    <pathelement location="${basedir}/cordaLib/groovy-all-1.8.9.jar"/>
+    <pathelement location="${basedir}/cordaLib/guava-25.1-jre.jar"/>
+    <pathelement location="${basedir}/cordaLib/h2-1.4.197.jar"/>
+    <pathelement location="${basedir}/cordaLib/hibernate-commons-annotations-5.0.4.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/hibernate-core-5.3.6.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/hibernate-java8-5.3.6.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/j2objc-annotations-1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-annotations-2.9.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-core-2.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-databind-2.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-dataformat-yaml-2.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-datatype-jsr310-2.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jackson-module-kotlin-2.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jandex-2.0.5.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/jansi-1.14.jar"/>
+    <pathelement location="${basedir}/cordaLib/javassist-3.23.1-GA.jar"/>
+    <pathelement location="${basedir}/cordaLib/javax.activation-api-1.2.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/javax.persistence-api-2.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/jboss-logging-3.3.2.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/jcabi-log-0.14.jar"/>
+    <pathelement location="${basedir}/cordaLib/jcabi-manifests-1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/jcl-over-slf4j-1.7.25.jar"/>
+    <pathelement location="${basedir}/cordaLib/jdom-1.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/jgroups-3.6.13.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/jimfs-1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/johnzon-core-0.9.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/jolokia-core-1.6.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/jolokia-jvm-1.6.0-agent.jar"/>
+    <pathelement location="${basedir}/cordaLib/jpam-1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/json-simple-1.1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/jsr305-3.0.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/jul-to-slf4j-1.7.25.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-reflect-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-common-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-jdk7-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-jdk8-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-jre7-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kotlin-stdlib-jre8-1.2.71.jar"/>
+    <pathelement location="${basedir}/cordaLib/kryo-4.0.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/kryo-serializers-0.42.jar"/>
+    <pathelement location="${basedir}/cordaLib/library-master-v1.1-beta-g6215ec8-87.jar"/>
+    <pathelement location="${basedir}/cordaLib/liquibase-core-3.5.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/liquibase-slf4j-2.0.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/log4j-api-2.9.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/log4j-core-2.9.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/log4j-slf4j-impl-2.9.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/log4j-web-2.9.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/metrics-core-3.2.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/metrics-new-relic-1.1.1.jar"/>
+    <pathelement location="${basedir}/cordaLib/mina-core-2.0.16.jar"/>
+    <pathelement location="${basedir}/cordaLib/minlog-1.3.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-buffer-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-codec-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-codec-http-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-common-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-handler-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-resolver-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-transport-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-transport-native-epoll-4.1.22.Final-linux-x86_64.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-transport-native-kqueue-4.1.22.Final-osx-x86_64.jar"/>
+    <pathelement location="${basedir}/cordaLib/netty-transport-native-unix-common-4.1.22.Final.jar"/>
+    <pathelement location="${basedir}/cordaLib/newrelic-api-3.10.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/objenesis-2.2.jar"/>
+    <pathelement location="${basedir}/cordaLib/okhttp-3.5.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/okio-1.11.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/picocli-3.8.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/postgresql-42.2.5.jar"/>
+    <pathelement location="${basedir}/cordaLib/proton-j-0.33.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/quasar-core-0.7.10-jdk8.jar"/>
+    <pathelement location="${basedir}/cordaLib/reflectasm-1.11.3.jar"/>
+    <pathelement location="${basedir}/cordaLib/rxjava-1.3.8.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-cache-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-config-core-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-config-ogdl-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-core-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-crypto-cipher-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-crypto-core-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-crypto-hash-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-event-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/shiro-lang-1.4.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/slf4j-api-1.7.25.jar"/>
+    <pathelement location="${basedir}/cordaLib/snakeyaml-1.18.jar"/>
+    <pathelement location="${basedir}/cordaLib/snappy-0.4.jar"/>
+    <pathelement location="${basedir}/cordaLib/sshd-core-1.6.0.jar"/>
+    <pathelement location="${basedir}/cordaLib/sshd-pam-0.11.0.jar"/>
+  </path>
+  
+  <path id="library.cordapplib.classpath">
+    <pathelement location="${basedir}/cordappLib/contracts-0.1.jar"/>
+    <pathelement location="${basedir}/cordappLib/tokens-contracts-1.0.jar"/>
+    <pathelement location="${basedir}/cordappLib/tokens-money-1.0.jar"/>
+    <pathelement location="${basedir}/cordappLib/tokens-workflows-1.0.jar"/>
+    <pathelement location="${basedir}/cordappLib/workflows-0.1.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_digitalexchange2.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.digitalexchange2, clean.artifact.digitalexchange2" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.digitalexchange2" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.digitalexchange2" value="${basedir}/out/artifacts/DigitalExchange2"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.DigitalExchange2" value="${artifacts.temp.dir}/DigitalExchange2.jar"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.digitalexchange2" description="clean DigitalExchange2 artifact output">
+    <delete dir="${artifact.output.digitalexchange2}"/>
+  </target>
+  
+  <target name="artifact.digitalexchange2" depends="init.artifacts, compile.module.digitalexchange2" description="Build &#39;DigitalExchange2&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.digitalexchange2}"/>
+    <copy todir="${artifact.temp.output.DigitalExchange2}">
+      <fileset dir="${digitalexchange2.output.dir}"/>
+    </copy>
+    <copy file="${basedir}/cordaLib/objenesis-2.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/objenesis-2.2.jar"/>
+    <copy file="${basedir}/cordaLib/jolokia-core-1.6.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/jolokia-core-1.6.0.jar"/>
+    <copy file="${basedir}/cordaLib/netty-resolver-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-resolver-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/hibernate-java8-5.3.6.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/hibernate-java8-5.3.6.Final.jar"/>
+    <copy file="${basedir}/cordaLib/metrics-core-3.2.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/metrics-core-3.2.5.jar"/>
+    <copy file="${basedir}/cordaLib/sshd-pam-0.11.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/sshd-pam-0.11.0.jar"/>
+    <copy file="${basedir}/cordaLib/forms-1.1-preview.jar" tofile="${artifact.temp.output.DigitalExchange2}/forms-1.1-preview.jar"/>
+    <copy file="${basedir}/cordaLib/corda-tools-cliutils-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-tools-cliutils-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-jdbc-store-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-jdbc-store-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/metrics-new-relic-1.1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/metrics-new-relic-1.1.1.jar"/>
+    <copy file="${basedir}/cordaLib/corda-core-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-core-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-crypto-cipher-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-crypto-cipher-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/bcprov-jdk15on-1.60.jar" tofile="${artifact.temp.output.DigitalExchange2}/bcprov-jdk15on-1.60.jar"/>
+    <copy file="${basedir}/cordaLib/HikariCP-2.5.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/HikariCP-2.5.1.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-event-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-event-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-netty-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-netty-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/liquibase-core-3.5.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/liquibase-core-3.5.5.jar"/>
+    <copy file="${basedir}/cordaLib/sshd-core-1.6.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/sshd-core-1.6.0.jar"/>
+    <copy file="${basedir}/cordaLib/crash.connectors.ssh-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar" tofile="${artifact.temp.output.DigitalExchange2}/crash.connectors.ssh-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-dataformat-yaml-2.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-dataformat-yaml-2.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/slf4j-api-1.7.25.jar" tofile="${artifact.temp.output.DigitalExchange2}/slf4j-api-1.7.25.jar"/>
+    <copy file="${basedir}/cordaLib/geronimo-json_1.0_spec-1.0-alpha-1.jar" tofile="${artifact.temp.output.DigitalExchange2}/geronimo-json_1.0_spec-1.0-alpha-1.jar"/>
+    <copy file="${basedir}/cordaLib/proton-j-0.33.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/proton-j-0.33.0.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-jdk8-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-jdk8-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/jul-to-slf4j-1.7.25.jar" tofile="${artifact.temp.output.DigitalExchange2}/jul-to-slf4j-1.7.25.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-config-ogdl-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-config-ogdl-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/jboss-logging-3.3.2.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/jboss-logging-3.3.2.Final.jar"/>
+    <copy file="${basedir}/cordaLib/commons-collections-3.2.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-collections-3.2.2.jar"/>
+    <copy file="${basedir}/cordaLib/javax.persistence-api-2.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/javax.persistence-api-2.2.jar"/>
+    <copy file="${basedir}/cordaLib/eddsa-0.2.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/eddsa-0.2.0.jar"/>
+    <copy file="${basedir}/cordaLib/LatencyUtils-2.0.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/LatencyUtils-2.0.3.jar"/>
+    <copy file="${basedir}/cordaLib/netty-transport-native-unix-common-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-transport-native-unix-common-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/netty-transport-native-kqueue-4.1.22.Final-osx-x86_64.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-transport-native-kqueue-4.1.22.Final-osx-x86_64.jar"/>
+    <copy file="${basedir}/cordaLib/postgresql-42.2.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/postgresql-42.2.5.jar"/>
+    <copy file="${basedir}/cordaLib/netty-codec-http-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-codec-http-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-core-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-core-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/kryo-serializers-0.42.jar" tofile="${artifact.temp.output.DigitalExchange2}/kryo-serializers-0.42.jar"/>
+    <copy file="${basedir}/cordaLib/h2-1.4.197.jar" tofile="${artifact.temp.output.DigitalExchange2}/h2-1.4.197.jar"/>
+    <copy file="${basedir}/cordaLib/jimfs-1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/jimfs-1.1.jar"/>
+    <copy file="${basedir}/cordaLib/johnzon-core-0.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/johnzon-core-0.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/commons-collections4-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-collections4-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/log4j-web-2.9.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/log4j-web-2.9.1.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-buffer-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-buffer-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-annotations-2.9.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-annotations-2.9.0.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-transport-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-transport-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/corda-node-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-node-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/commons-beanutils-1.9.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-beanutils-1.9.3.jar"/>
+    <copy file="${basedir}/cordaLib/quasar-core-0.7.10-jdk8.jar" tofile="${artifact.temp.output.DigitalExchange2}/quasar-core-0.7.10-jdk8.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-core-2.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-core-2.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/animal-sniffer-annotations-1.14.jar" tofile="${artifact.temp.output.DigitalExchange2}/animal-sniffer-annotations-1.14.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-jms-client-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-jms-client-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/copycat-server-1.2.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/copycat-server-1.2.3.jar"/>
+    <copy file="${basedir}/cordaLib/dom4j-1.6.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/dom4j-1.6.1.jar"/>
+    <copy file="${basedir}/cordaLib/newrelic-api-3.10.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/newrelic-api-3.10.0.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-selector-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-selector-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/snakeyaml-1.18.jar" tofile="${artifact.temp.output.DigitalExchange2}/snakeyaml-1.18.jar"/>
+    <copy file="${basedir}/cordaLib/jgroups-3.6.13.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/jgroups-3.6.13.Final.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-reflect-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-reflect-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/corda-rpc-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-rpc-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/copycat-client-1.2.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/copycat-client-1.2.3.jar"/>
+    <copy file="${basedir}/cordaLib/netty-common-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-common-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/liquibase-slf4j-2.0.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/liquibase-slf4j-2.0.0.jar"/>
+    <copy file="${basedir}/cordaLib/checker-qual-2.0.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/checker-qual-2.0.0.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-core-client-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-core-client-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-concurrent-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-concurrent-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-databind-2.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-databind-2.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/netty-transport-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-transport-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/netty-handler-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-handler-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+    <copy file="${basedir}/cordaLib/rxjava-1.3.8.jar" tofile="${artifact.temp.output.DigitalExchange2}/rxjava-1.3.8.jar"/>
+    <copy file="${basedir}/cordaLib/commons-lang-2.6.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-lang-2.6.jar"/>
+    <copy file="${basedir}/cordaLib/corda-jackson-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-jackson-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-datatype-jsr310-2.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-datatype-jsr310-2.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/corda-node-api-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-node-api-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-config-core-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-config-core-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/mina-core-2.0.16.jar" tofile="${artifact.temp.output.DigitalExchange2}/mina-core-2.0.16.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-crypto-hash-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-crypto-hash-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/commons-io-2.6.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-io-2.6.jar"/>
+    <copy file="${basedir}/cordaLib/classmate-1.3.4.jar" tofile="${artifact.temp.output.DigitalExchange2}/classmate-1.3.4.jar"/>
+    <copy file="${basedir}/cordaLib/minlog-1.3.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/minlog-1.3.0.jar"/>
+    <copy file="${basedir}/cordaLib/hibernate-commons-annotations-5.0.4.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/hibernate-commons-annotations-5.0.4.Final.jar"/>
+    <copy file="${basedir}/cordaLib/jansi-1.14.jar" tofile="${artifact.temp.output.DigitalExchange2}/jansi-1.14.jar"/>
+    <copy file="${basedir}/cordaLib/bcpkix-jdk15on-1.60.jar" tofile="${artifact.temp.output.DigitalExchange2}/bcpkix-jdk15on-1.60.jar"/>
+    <copy file="${basedir}/cordaLib/jackson-module-kotlin-2.9.5.jar" tofile="${artifact.temp.output.DigitalExchange2}/jackson-module-kotlin-2.9.5.jar"/>
+    <copy file="${basedir}/cordaLib/netty-buffer-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-buffer-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/jcabi-log-0.14.jar" tofile="${artifact.temp.output.DigitalExchange2}/jcabi-log-0.14.jar"/>
+    <copy file="${basedir}/cordaLib/kryo-4.0.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/kryo-4.0.0.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-common-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-common-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/disruptor-3.4.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/disruptor-3.4.2.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-commons-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-commons-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/library-master-v1.1-beta-g6215ec8-87.jar" tofile="${artifact.temp.output.DigitalExchange2}/library-master-v1.1-beta-g6215ec8-87.jar"/>
+    <copy file="${basedir}/cordaLib/crash.cli-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar" tofile="${artifact.temp.output.DigitalExchange2}/crash.cli-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <copy file="${basedir}/cordaLib/netty-codec-4.1.22.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-codec-4.1.22.Final.jar"/>
+    <copy file="${basedir}/cordaLib/picocli-3.8.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/picocli-3.8.0.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-native-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-native-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/jsr305-3.0.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/jsr305-3.0.2.jar"/>
+    <copy file="${basedir}/cordaLib/snappy-0.4.jar" tofile="${artifact.temp.output.DigitalExchange2}/snappy-0.4.jar"/>
+    <copy file="${basedir}/cordaLib/jdom-1.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/jdom-1.0.jar"/>
+    <copy file="${basedir}/cordaLib/okio-1.11.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/okio-1.11.0.jar"/>
+    <copy file="${basedir}/cordaLib/log4j-api-2.9.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/log4j-api-2.9.1.jar"/>
+    <copy file="${basedir}/cordaLib/log4j-slf4j-impl-2.9.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/log4j-slf4j-impl-2.9.1.jar"/>
+    <copy file="${basedir}/cordaLib/groovy-all-1.8.9.jar" tofile="${artifact.temp.output.DigitalExchange2}/groovy-all-1.8.9.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-serializer-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-serializer-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-jdk7-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-jdk7-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/jolokia-jvm-1.6.0-agent.jar" tofile="${artifact.temp.output.DigitalExchange2}/jolokia-jvm-1.6.0-agent.jar"/>
+    <copy file="${basedir}/cordaLib/commons-jexl3-3.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-jexl3-3.0.jar"/>
+    <copy file="${basedir}/cordaLib/log4j-core-2.9.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/log4j-core-2.9.1.jar"/>
+    <copy file="${basedir}/cordaLib/corda-common-validation-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-common-validation-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/antlr-2.7.7.jar" tofile="${artifact.temp.output.DigitalExchange2}/antlr-2.7.7.jar"/>
+    <copy file="${basedir}/cordaLib/asm-5.0.4.jar" tofile="${artifact.temp.output.DigitalExchange2}/asm-5.0.4.jar"/>
+    <copy file="${basedir}/cordaLib/reflectasm-1.11.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/reflectasm-1.11.3.jar"/>
+    <copy file="${basedir}/cordaLib/guava-25.1-jre.jar" tofile="${artifact.temp.output.DigitalExchange2}/guava-25.1-jre.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-server-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-server-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/classgraph-4.6.12.jar" tofile="${artifact.temp.output.DigitalExchange2}/classgraph-4.6.12.jar"/>
+    <copy file="${basedir}/cordaLib/caffeine-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/caffeine-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/HdrHistogram-2.1.9.jar" tofile="${artifact.temp.output.DigitalExchange2}/HdrHistogram-2.1.9.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-amqp-protocol-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-amqp-protocol-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/json-simple-1.1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/json-simple-1.1.1.jar"/>
+    <copy file="${basedir}/cordaLib/corda-serialization-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-serialization-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-jre8-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-jre8-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/jandex-2.0.5.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/jandex-2.0.5.Final.jar"/>
+    <copy file="${basedir}/cordaLib/commons-codec-1.10.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-codec-1.10.jar"/>
+    <copy file="${basedir}/cordaLib/jpam-1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/jpam-1.1.jar"/>
+    <copy file="${basedir}/cordaLib/corda-common-logging-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-common-logging-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/catalyst-common-1.1.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/catalyst-common-1.1.2.jar"/>
+    <copy file="${basedir}/cordaLib/jcabi-manifests-1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/jcabi-manifests-1.1.jar"/>
+    <copy file="${basedir}/cordaLib/ea-agent-loader-1.0.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/ea-agent-loader-1.0.3.jar"/>
+    <copy file="${basedir}/cordaLib/corda-confidential-identities-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-confidential-identities-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/config-1.3.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/config-1.3.3.jar"/>
+    <copy file="${basedir}/cordaLib/j2objc-annotations-1.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/j2objc-annotations-1.1.jar"/>
+    <copy file="${basedir}/cordaLib/javassist-3.23.1-GA.jar" tofile="${artifact.temp.output.DigitalExchange2}/javassist-3.23.1-GA.jar"/>
+    <copy file="${basedir}/cordaLib/forms_rt-7.0.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/forms_rt-7.0.3.jar"/>
+    <copy file="${basedir}/cordaLib/crash.shell-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar" tofile="${artifact.temp.output.DigitalExchange2}/crash.shell-810d2b774b85d4938be01b9b65e29e4fddbc450b.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-crypto-core-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-crypto-core-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/corda-shell-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-shell-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/corda-common-configuration-parsing-4.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/corda-common-configuration-parsing-4.1.jar"/>
+    <copy file="${basedir}/cordaLib/geronimo-jms_2.0_spec-1.0-alpha-2.jar" tofile="${artifact.temp.output.DigitalExchange2}/geronimo-jms_2.0_spec-1.0-alpha-2.jar"/>
+    <copy file="${basedir}/cordaLib/jcl-over-slf4j-1.7.25.jar" tofile="${artifact.temp.output.DigitalExchange2}/jcl-over-slf4j-1.7.25.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-cache-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-cache-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/copycat-protocol-1.2.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/copycat-protocol-1.2.3.jar"/>
+    <copy file="${basedir}/cordaLib/shiro-lang-1.4.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/shiro-lang-1.4.0.jar"/>
+    <copy file="${basedir}/cordaLib/byte-buddy-1.8.17.jar" tofile="${artifact.temp.output.DigitalExchange2}/byte-buddy-1.8.17.jar"/>
+    <copy file="${basedir}/cordaLib/artemis-journal-2.6.2.jar" tofile="${artifact.temp.output.DigitalExchange2}/artemis-journal-2.6.2.jar"/>
+    <copy file="${basedir}/cordaLib/hibernate-core-5.3.6.Final.jar" tofile="${artifact.temp.output.DigitalExchange2}/hibernate-core-5.3.6.Final.jar"/>
+    <copy file="${basedir}/cordaLib/kotlin-stdlib-jre7-1.2.71.jar" tofile="${artifact.temp.output.DigitalExchange2}/kotlin-stdlib-jre7-1.2.71.jar"/>
+    <copy file="${basedir}/cordaLib/netty-transport-native-epoll-4.1.22.Final-linux-x86_64.jar" tofile="${artifact.temp.output.DigitalExchange2}/netty-transport-native-epoll-4.1.22.Final-linux-x86_64.jar"/>
+    <copy file="${basedir}/cordaLib/okhttp-3.5.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/okhttp-3.5.0.jar"/>
+    <copy file="${basedir}/cordaLib/annotations-13.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/annotations-13.0.jar"/>
+    <copy file="${basedir}/cordaLib/javax.activation-api-1.2.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/javax.activation-api-1.2.0.jar"/>
+    <copy file="${basedir}/cordaLib/error_prone_annotations-2.1.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/error_prone_annotations-2.1.3.jar"/>
+    <copy file="${basedir}/cordaLib/commons-fileupload-1.3.3.jar" tofile="${artifact.temp.output.DigitalExchange2}/commons-fileupload-1.3.3.jar"/>
+    <copy file="${basedir}/cordappLib/contracts-0.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/contracts-0.1.jar"/>
+    <copy file="${basedir}/cordappLib/workflows-0.1.jar" tofile="${artifact.temp.output.DigitalExchange2}/workflows-0.1.jar"/>
+    <copy file="${basedir}/cordappLib/tokens-contracts-1.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/tokens-contracts-1.0.jar"/>
+    <copy file="${basedir}/cordappLib/tokens-money-1.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/tokens-money-1.0.jar"/>
+    <copy file="${basedir}/cordappLib/tokens-workflows-1.0.jar" tofile="${artifact.temp.output.DigitalExchange2}/tokens-workflows-1.0.jar"/>
+    <fx:fileset id="all_but_DigitalExchange2" dir="${artifact.temp.output.DigitalExchange2}" includes="**/*.jar">
+      <exclude name="DigitalExchange2.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_DigitalExchange2" dir="${artifact.temp.output.DigitalExchange2}" includes="**/*.jar"/>
+    <fx:application id="DigitalExchange2_id" name="DigitalExchange2" mainClass="sample.Main"/>
+    <fx:jar destfile="${artifact.temp.output.DigitalExchange2}/DigitalExchange2.jar">
+      <fx:application refid="DigitalExchange2_id"/>
+      <fileset dir="${artifact.temp.output.DigitalExchange2}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_DigitalExchange2"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value=""/>
+        <attribute name="Implementation-Version" value=""/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.DigitalExchange2}/deploy" outfile="DigitalExchange2">
+      <fx:application refid="DigitalExchange2_id"/>
+      <fx:resources>
+        <fx:fileset refid="all_DigitalExchange2"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.digitalexchange2}">
+      <fileset dir="${artifact.temp.output.DigitalExchange2}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.DigitalExchange2}"/>
+    </delete>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.digitalexchange2" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

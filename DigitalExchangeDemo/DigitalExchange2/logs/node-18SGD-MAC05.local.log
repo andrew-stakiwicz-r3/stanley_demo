@@ -1,0 +1,12 @@
+[INFO ] 2019-08-13T01:14:30,177Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1277 msec
+[INFO ] 2019-08-13T01:14:55,486Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1127 msec
+[INFO ] 2019-08-13T01:18:26,171Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1277 msec
+[INFO ] 2019-08-13T02:06:40,428Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1250 msec
+[INFO ] 2019-08-13T02:14:21,477Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1216 msec
+[INFO ] 2019-08-13T02:15:15,337Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1218 msec
+[INFO ] 2019-08-13T02:43:15,121Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1207 msec
+[INFO ] 2019-08-13T02:48:44,124Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1275 msec
+[INFO ] 2019-08-13T02:50:31,381Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1256 msec
+[INFO ] 2019-08-13T02:51:35,436Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1291 msec
+[INFO ] 2019-08-13T02:53:05,131Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1233 msec
+[INFO ] 2019-08-13T02:53:52,806Z [JavaFX Application Thread] internal.RPCClient.logElapsedTime - Startup took 1232 msec

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+
+      <TabPane fx:id="TP" layoutX="0" layoutY="0" prefHeight="450.0" prefWidth="600.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="T_fiat_issuance" text="Issue Fiat">
+               <content>
+                  <GridPane prefHeight="450.0" prefWidth="600.0">
+                     <Label text="       " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                     <Label text="Issue Currency:" GridPane.columnIndex="1" GridPane.rowIndex="1" />  <ComboBox fx:id="IM_currencyComboBox" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <Label text="Issue Amount:" GridPane.columnIndex="1" GridPane.rowIndex="2" />  <TextField fx:id="IM_amount" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     <Label text="Recipient:" GridPane.columnIndex="1" GridPane.rowIndex="3" /> <ComboBox fx:id="IM_recipient" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+
+                     <Button mnemonicParsing="false" onAction="#IM_submit" text="Submit" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints maxWidth="159.0" minWidth="100.0" prefWidth="126.0" />
+                        <ColumnConstraints maxWidth="296.0" minWidth="237.0" prefWidth="270.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+
+                  </GridPane>
+               </content></Tab>
+            <Tab fx:id="T_stock_issuance" text="Issue Stock">
+               <content>
+                  <AnchorPane prefHeight="450.0" prefWidth="600.0">
+                  <children>
+                  <GridPane prefHeight="450.0" prefWidth="600.0">
+                     <Label text="       " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                     <Label text="Symbol:" GridPane.columnIndex="1" GridPane.rowIndex="1" />  <TextField fx:id="IS_symbol" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <Label text="Name:" GridPane.columnIndex="1" GridPane.rowIndex="2" />  <TextField fx:id="IS_name" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     <Label text="Trading Currency:" GridPane.columnIndex="1" GridPane.rowIndex="3" /> <ComboBox fx:id="IS_currency" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                     <Label text="Issue Volume:" GridPane.columnIndex="1" GridPane.rowIndex="4" /> <TextField fx:id="IS_issueVol" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+
+                     <Button mnemonicParsing="false" onAction="#IS_issueStock" text="Issue Securities" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+                     <Label text="Dividend:" GridPane.columnIndex="1" GridPane.rowIndex="7" /> <TextField fx:id="IS_dividend" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                     <Label text="Ex-Date:" GridPane.columnIndex="1" GridPane.rowIndex="8" /> <TextField fx:id="IS_exDate" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                     <Label text="Pay Date:" GridPane.columnIndex="1" GridPane.rowIndex="9" /> <TextField fx:id="IS_payDate" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+
+                     <Button mnemonicParsing="false" onAction="#IS_announceDivided" text="Announce Dividend" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+
+
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                              <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                     </rowConstraints>
+
+                  </GridPane>
+                     <TableView fx:id="IS_stockTable" layoutX="20" layoutY="270" prefHeight="150.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+
+                     </TableView>
+
+                  </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab fx:id="T_move_token" text="Move Token">
+               <content>
+                  <GridPane prefHeight="450.0" prefWidth="600.0">
+                     <Label text="       " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                     <Label text="Currency:" GridPane.columnIndex="1" GridPane.rowIndex="1" />  <ComboBox fx:id="MF_currencyComboBox" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <Label text="Transfer Amount:" GridPane.columnIndex="1" GridPane.rowIndex="2" />  <TextField fx:id="MF_amount" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     <Label text="Recipient:" GridPane.columnIndex="1" GridPane.rowIndex="3" /> <ComboBox fx:id="MF_recipient" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                     <Button mnemonicParsing="false" onAction="#MF_submit" text="Move Fiat Token" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                     <Label text="       " GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                     <Label text="Symbol:" GridPane.columnIndex="1" GridPane.rowIndex="7" />  <TextField fx:id="MS_symbol" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                     <Label text="Transfer Amount:" GridPane.columnIndex="1" GridPane.rowIndex="8" />  <TextField fx:id="MS_amount" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                     <Label text="Recipient:" GridPane.columnIndex="1" GridPane.rowIndex="9" /> <ComboBox fx:id="MS_recipient" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                     <Button mnemonicParsing="false" onAction="#MS_submit" text="Move Stock Token" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+
+
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints maxWidth="159.0" minWidth="100.0" prefWidth="126.0" />
+                        <ColumnConstraints maxWidth="296.0" minWidth="237.0" prefWidth="270.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+
+                  </GridPane>
+               </content></Tab>
+
+            <Tab text="Portfolio">
+               <content>
+               <AnchorPane prefHeight="450.0" prefWidth="600.0">
+               <children>
+
+                  <Button layoutX="20" layoutY="20" mnemonicParsing="false" onAction="#retrievePortfolio" prefWidth="150.0" text="Refresh Token"  />
+               <GridPane layoutX="20" layoutY="60" prefHeight="50.0" prefWidth="600.0">
+
+
+                  <Label text="GBP: "  GridPane.columnIndex="0" GridPane.rowIndex="1" />  <Label fx:id="PORT_gbp" prefWidth="100" alignment="CENTER_RIGHT" text="----" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label style="-fx-font-weight: bold" text="          HKD: " GridPane.columnIndex="3" GridPane.rowIndex="1" />  <Label fx:id="PORT_hkd" prefWidth="100" alignment="CENTER_RIGHT" text="----" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+
+                  <Label text="KRW: " GridPane.columnIndex="0" GridPane.rowIndex="2" />  <Label fx:id="PORT_sgd" prefWidth="100" alignment="CENTER_RIGHT" text="----" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="          USD: " GridPane.columnIndex="3" GridPane.rowIndex="2" />  <Label fx:id="PORT_usd" prefWidth="100" alignment="CENTER_RIGHT" text="----" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+
+               </GridPane>
+
+
+               <TableView fx:id="PORT_stockTable" layoutX="20" layoutY="100" prefHeight="150.0" prefWidth="500.0" >
+
+               </TableView>
+
+               <TableView fx:id="PORT_dividendReceivableTable" layoutX="20" layoutY="250" prefHeight="150.0" prefWidth="500.0" >
+
+               </TableView>
+               </children>
+               </AnchorPane>
+               </content>
+
+            </Tab>
+
+         </tabs>
+         <Tab fx:id="T_txn" text="Transaction History">
+         <content>
+         <AnchorPane prefHeight="450.0" prefWidth="800.0">
+         <children>
+            <Button layoutX="20" layoutY="20" mnemonicParsing="false" onAction="#retrieveTransaction" prefWidth="150.0" text="Refresh Transaction"  />
+            <TableView fx:id="TXN_table" layoutX="20" layoutY="50" prefHeight="390.0" prefWidth="800.0" >
+            </TableView>
+         </children>
+         </AnchorPane>
+         </content>
+         </Tab>
+      </TabPane>
+   </children>
+</AnchorPane>

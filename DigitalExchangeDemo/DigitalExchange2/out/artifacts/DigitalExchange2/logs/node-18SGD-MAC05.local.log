@@ -1,0 +1,3 @@
+[INFO ] 2020-05-19T11:54:22,936Z [JavaFX Application Thread] internal.RPCClient. - Startup took 1336 msec
+[WARN ] 2020-05-19T13:26:54,898Z [Thread-25 (ActiveMQ-client-global-threads)] internal.RPCClientProxyHandl[WARN ] 2020-05-19T13:27:02,420Z [Thread-64 (ActiveMQ-client-global-threads)] internal.RPCClientProxyHandler. - Terminating observables.
+Z [Thread-56 (ActiveMQ-client-global-threads)] internal.RPCClientProxyHandl[WARN ] 2020-05-19T13:27:08,000Z [Thread-60 (ActiveMQ-client-global-threads)] internal.RPCClientProxyHandler. - Terminating observables.

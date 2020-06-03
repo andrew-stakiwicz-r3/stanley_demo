@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="cordappLib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cordappLib/workflows-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/cordappLib/contracts-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/cordappLib/tokens-selection-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/cordappLib/tokens-money-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/cordappLib/tokens-workflows-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/cordappLib/tokens-contracts-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

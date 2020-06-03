@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Application-Version: 4.3
+Corda-Platform-Version: 5
+Caplets: CordaCaplet
+Automatic-Module-Name: net.corda.capsule
+Java-Agents: quasar-core-0.7.10-jdk8.jar=x(antlr**;bftsmart**;co.paral
+ leluniverse**;com.codahale**;com.esotericsoftware**;com.fasterxml**;c
+ om.google**;com.ibm**;com.intellij**;com.jcabi**;com.nhaarman**;com.o
+ pengamma**;com.typesafe**;com.zaxxer**;de.javakaffee**;groovy**;groov
+ yjarjarantlr**;groovyjarjarasm**;io.atomix**;io.github**;io.netty**;j
+ dk**;junit**;kotlin**;net.bytebuddy**;net.i2p**;org.apache**;org.asse
+ rtj**;org.bouncycastle**;org.codehaus**;org.crsh**;org.dom4j**;org.fu
+ sesource**;org.h2**;org.hamcrest**;org.hibernate**;org.jboss**;org.jc
+ p**;org.joda**;org.junit**;org.mockito**;org.objectweb**;org.objenesi
+ s**;org.slf4j**;org.w3c**;org.xml**;org.yaml**;reflectasm**;rx**;org.
+ jolokia**;com.lmax**;picocli**;liquibase**;com.github.benmanes**;org.
+ json**;org.postgresql**;nonapi.io.github.classgraph**)
+Corda-Vendor: Corda Open Source
+JVM-Args: -Xmx512m -XX:+UseG1GC
+Main-Class: Capsule
+Corda-Revision: d679784a179e95c57696d13c95beeccfe350d7d5
+Premain-Class: Capsule
+Application-Class: net.corda.node.Corda
+System-Properties: visualvm.display.name=Corda
+Corda-Release-Version: 4.3
+Min-Update-Version: 1.8=171
+Application-ID: net.corda.node.Corda
+Min-Java-Version: 1.8.0
+
